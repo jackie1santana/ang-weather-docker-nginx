@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // app.use(express.static(path.join(__dirname, 'client/dist')))
 app.get('/', (req, res) => {
-	res.send('wassuip')
+	res.send('wassubsip')
 })
 
 

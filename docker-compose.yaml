@@ -7,11 +7,13 @@ services:
     # command: npm start -- -L
     working_dir: /usr/src/app
     ports:
-      - '3000:3000'
+      - '80:80'
     volumes:
       - ./:/usr/src/app
     links: 
       - mongo
+    networks: 
+      - backend
   client:
     container_name: client-container
     restart: always
@@ -33,5 +35,19 @@ services:
       - '27017:27017'
     volumes:
       - node_angDB:/data/db 
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    links:
+     - app
+    networks: 
+    - backend
+networks:
+    backend:
+      driver: "bridge"
 volumes:
   node_angDB:
