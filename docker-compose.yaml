@@ -7,7 +7,7 @@ services:
     # command: npm start -- -L
     working_dir: /usr/src/app
     ports:
-      - '80:80'
+      - '3000:3000'
     volumes:
       - ./:/usr/src/app
     links: 
@@ -41,7 +41,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "80:80"
     links:
      - app
     networks: 
