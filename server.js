@@ -21,7 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-// app.use(express.static(path.join(__dirname, 'client/dist')))
+app.use(express.static(path.join(__dirname, 'client/dist')))
+
 app.get('/', (req, res) => {
 	res.send('wassubsip')
 })
@@ -30,7 +31,8 @@ app.get('/', (req, res) => {
 
 
 
-mongoose.connect('mongodb://mongo:27017/users', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://mongo:27017/users', {useNewUrlParser: true, 
+useUnifiedTopology: true, useCreateIndex: true});
 
 const User = mongoose.model('User', { name: String });
 
@@ -42,3 +44,4 @@ console.log('helddfdf')
 app.listen(PORT, () => {
 	console.log(`local server running on port ${PORT}`)
 })
+

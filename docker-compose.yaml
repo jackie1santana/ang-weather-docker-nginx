@@ -10,8 +10,6 @@ services:
       - '3000:3000'
     volumes:
       - ./:/usr/src/app
-    links: 
-      - mongo
     networks: 
       - backend
   client:
@@ -35,6 +33,8 @@ services:
       - '27017:27017'
     volumes:
       - node_angDB:/data/db 
+    networks:
+      - backend
   nginx:
     restart: always
     build:
